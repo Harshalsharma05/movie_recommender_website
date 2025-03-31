@@ -5,15 +5,16 @@ import gdown
 import os
 
 # Google Drive File ID (Replace with your actual ID)
-file_id = "1eRDHK8SCA4YkGiSDMfISUSMPcH4q1DHU"  # Change this!
+file_id = "1eRDHK8SCA4YkGiSDMfISUSMPcH4q1DHU" 
 
 # Define the filename
 similarity_file = "similarity_matrix.pkl"
 
 # Check if file already exists to avoid repeated downloads
 if not os.path.exists(similarity_file):
-    url = f"https://drive.google.com/uc?id={file_id}"
-    gdown.download(url, similarity_file, quiet=False, fuzzy=True)
+    with st.spinner("Downloading similarity matrix..."):
+        url = f"https://drive.google.com/uc?id={file_id}"
+        gdown.download(url, similarity_file, quiet=False)
 
 
 def fetch_poster(movie_id):
