@@ -1,77 +1,85 @@
 # Movie Recommendation Engine
 
-This project is a movie recommendation engine built using Streamlit. It allows users to select a movie and receive recommendations based on their choice. The application fetches movie posters and displays them alongside the recommended movie titles.
+This project is a movie recommendation engine built using **Streamlit**. It allows users to select a movie and receive recommendations based on similarity scores. The application fetches movie posters and displays them alongside the recommended movie titles.
 
-## Project Structure
+🚀 **Live Demo:** [Click Here](https://movie-recommendation-system-ae6f.onrender.com/)
 
-- `app.py`: Contains the main application code for the movie recommendation engine, including functions to fetch movie posters and recommend movies.
-- `requirements.txt`: Lists the dependencies required for the project, including libraries such as Streamlit and requests.
-- `README.md`: Documentation for the project, including setup and running instructions.
+## 📂 Project Structure
 
-## Setup Instructions
+- **`app.py`**: Main application code for the movie recommendation system.
+- **`requirements.txt`**: Lists dependencies required for the project.
+- **`README.md`**: Documentation with setup and deployment instructions.
+- **`movies.pkl`**: Serialized file containing movie data.
+- **`similarity_matrix.pkl`**: Serialized file storing similarity scores (loaded dynamically).
 
-To set up and run the application locally, follow these steps:
+---
+## 🚀 Local Setup Instructions
 
-1. **Clone the Repository**:
-   ```
-   git clone <repository-url>
-   cd Movie_recommendation_engine
-   ```
+Follow these steps to run the application locally:
 
-2. **Install Dependencies**:
-   Make sure you have Python installed, then install the required packages:
-   ```
-   pip install -r requirements.txt
-   ```
+### 1️⃣ **Clone the Repository**
+```bash
+git clone <repository-url>
+cd Movie_recommendation_engine
+```
 
-3. **Run the Application**:
-   Start the Streamlit application:
-   ```
-   streamlit run app.py
-   ```
+### 2️⃣ **Install Dependencies**
+Ensure you have **Python 3.8+** installed. Then, install the required packages:
+```bash
+pip install -r requirements.txt
+```
 
-4. **Open in Browser**:
-   After running the command, a new tab will open in your default web browser displaying the movie recommendation engine.
+### 3️⃣ **Run the Application**
+```bash
+streamlit run app.py
+```
+This will start a local development server and open the application in your default browser.
 
-## Deployment on Vercel
+---
+## 🌍 Deployment on Render
 
-To deploy this project on Vercel, follow these steps:
+You can deploy this project on **Render**, a free cloud platform for web applications.
 
-1. **Create a Vercel Account**: Sign up for a Vercel account if you don't have one.
+### 1️⃣ **Create a Render Account**
+- Sign up at [Render](https://render.com/).
+- Verify your email and login.
 
-2. **Install Vercel CLI**: Install the Vercel CLI globally using npm:
-   ```
-   npm install -g vercel
-   ```
+### 2️⃣ **Create a New Web Service**
+- Click on **"New"** → **"Web Service"**.
+- Connect your **GitHub repository**.
+- Select **Python** as the runtime.
+- Choose the **region** closest to your audience.
 
-3. **Prepare Your Project**:
-   - Ensure your `requirements.txt` file is complete with all necessary dependencies.
-   - Modify `app.py` to include a `main` function that runs the Streamlit app if it's not already present.
+### 3️⃣ **Configure Build Settings**
+- **Build Command:**
+  ```bash
+  pip install -r requirements.txt
+  ```
+- **Start Command:**
+  ```bash
+  streamlit run app.py --server.port=10000 --server.address=0.0.0.0
+  ```
+- Set **Python version** (under environment settings) to **3.8+**.
 
-4. **Create a Vercel Configuration File**: Create a `vercel.json` file in the root of your project with the following content:
-   {
-     "builds": [
-       {
-         "src": "app.py",
-         "use": "@vercel/python"
-       }
-     ],
-     "routes": [
-       {
-         "src": "/(.*)",
-         "dest": "app.py"
-       }
-     ]
-   }
+### 4️⃣ **Deploy the Application**
+- Click **"Deploy"** and wait for the process to complete.
+- Open the **Render Live Link** to access your deployed app.
 
-5. **Deploy Your Project**:
-   - Open your terminal and navigate to your project directory.
-   - Run the following command to deploy:
-     ```
-     vercel
-     ```
-   - Follow the prompts to link your project to your Vercel account and deploy it.
+### 5️⃣ **Enable Auto-Deploy (Optional)**
+- Navigate to **Settings**.
+- Enable **Auto-Deploy** to update the app automatically when you push new changes.
 
-6. **Access Your Deployed App**: After deployment, Vercel will provide a URL where your app is hosted. You can access your movie recommendation engine from that URL.
+---
+## 🛠 Troubleshooting
 
-Make sure to test your application after deployment to ensure everything is working as expected.
+- If the app **keeps downloading `similarity_matrix.pkl` on every request**, check if the file exists before downloading.
+- If deployment **fails on Render**, ensure that:
+  - Your **GitHub repository is public** (or use Render's private repo access).
+  - `requirements.txt` has all dependencies.
+  - Your **Start Command** is correctly set.
+
+---
+## 📜 License
+This project is for educational purposes. Feel free to use and modify it!
+
+For any issues, create an **issue** on GitHub or reach out!
