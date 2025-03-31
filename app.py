@@ -1,6 +1,20 @@
 import pickle
 import streamlit as st
 import requests
+import gdown
+import os
+
+# Google Drive File ID (Replace with your actual ID)
+file_id = "1eRDHK8SCA4YkGiSDMfISUSMPcH4q1DHU"  # Change this!
+
+# Define the filename
+similarity_file = "similarity_matrix.pkl"
+
+# Check if file already exists to avoid repeated downloads
+if not os.path.exists(similarity_file):
+    url = f"https://drive.google.com/uc?id={file_id}"
+    gdown.download(url, similarity_file, quiet=False, fuzzy=True)
+
 
 def fetch_poster(movie_id):
     url = "https://api.themoviedb.org/3/movie/{}?api_key=2c9f478a1841282cdbfe607766a3c061&language=en-US".format(movie_id)
